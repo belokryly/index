@@ -14,37 +14,37 @@
      Replace placeholder text marked with /* EDITABLE */
      /* and image URLs marked with /* PLACEHOLDER IMAGE */
   /* ========================================================== */
-
+ 
   :root {
     --bg-0: #0A0B0D;
     --bg-1: #0E0F12;
     --bg-card: #14151A;
     --bg-card-2: #1A1C22;
-
+ 
     /* Platinum spectrum — cool silver with subtle blue undertone */
     --platinum: #E8E9EC;        /* primary accent — bright platinum */
     --platinum-soft: #F4F5F7;   /* highlight tip in gradients */
     --platinum-deep: #8A8E96;   /* mid-tone for depth */
     --platinum-shadow: #4A4D54; /* deepest tone for gradient anchors */
     --platinum-blue: #BFC8D6;   /* subtle blue cast — the "real" platinum tell */
-
+ 
     --wine: #3A0F1E;
     --neon: #B86BFF;
     --text: #F5F6F8;
     --muted: #9CA0A8;
     --line: rgba(232, 233, 236, 0.10);
     --line-strong: rgba(232, 233, 236, 0.28);
-
+ 
     /* Backwards-compat aliases — all existing 'gold' refs now resolve to platinum */
     --gold: var(--platinum);
     --gold-soft: var(--platinum-soft);
     --gold-deep: var(--platinum-deep);
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html { scroll-behavior: smooth; }
-
+ 
   body {
     background: var(--bg-0);
     color: var(--text);
@@ -55,7 +55,7 @@
     -webkit-font-smoothing: antialiased;
     cursor: none;
   }
-
+ 
   /* Subtle film grain overlay across whole page */
   body::before {
     content: '';
@@ -67,7 +67,7 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     mix-blend-mode: overlay;
   }
-
+ 
   /* ===== Custom Cursor: spinning vinyl record (desktop) ===== */
   .cursor-vinyl {
     position: fixed;
@@ -137,12 +137,12 @@
       0 4px 16px rgba(0, 0, 0, 0.6),
       inset 0 0 8px rgba(0, 0, 0, 0.6);
   }
-
+ 
   @media (max-width: 900px) {
     body { cursor: auto; }
     .cursor-vinyl { display: none; }
   }
-
+ 
   /* Spotlight effect that follows cursor */
   .spotlight {
     position: fixed;
@@ -154,7 +154,7 @@
     mix-blend-mode: screen;
     transition: opacity 0.5s;
   }
-
+ 
   /* Typography */
   h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
@@ -162,7 +162,7 @@
     letter-spacing: -0.015em;
     line-height: 1.05;
   }
-
+ 
   .label {
     font-family: 'Outfit', sans-serif;
     font-size: 0.7rem;
@@ -171,7 +171,7 @@
     text-transform: uppercase;
     color: var(--gold);
   }
-
+ 
   .label-muted {
     font-family: 'Outfit', sans-serif;
     font-size: 0.7rem;
@@ -180,7 +180,7 @@
     text-transform: uppercase;
     color: var(--muted);
   }
-
+ 
   /* ===== Header ===== */
   .header {
     position: fixed;
@@ -245,7 +245,7 @@
     .header { padding: 1rem 1.25rem; }
     .header.scrolled { padding: 0.7rem 1.25rem; }
   }
-
+ 
   /* Buttons */
   .btn {
     display: inline-flex;
@@ -305,7 +305,7 @@
     transition: transform 0.3s;
   }
   .btn:hover .btn-arrow { transform: translateX(4px); }
-
+ 
   /* ===== Hero ===== */
   .hero {
     position: relative;
@@ -400,7 +400,7 @@
     gap: 1rem;
     margin-bottom: 3rem;
   }
-
+ 
   /* Vibe button + equalizer */
   .vibe-row {
     display: flex;
@@ -460,7 +460,7 @@
     0%, 100% { height: 4px; }
     50% { height: 20px; }
   }
-
+ 
   /* Scroll cue */
   .scroll-cue {
     position: absolute;
@@ -486,7 +486,7 @@
     0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
     50% { transform: scaleY(1); opacity: 1; }
   }
-
+ 
   /* Image loading fallback — never show empty box if URL fails */
   .img-fallback {
     background-image:
@@ -516,7 +516,7 @@
     background-repeat: no-repeat;
     opacity: 0.18;
   }
-
+ 
   /* ===== Section Base ===== */
   section.block {
     padding: 8rem 2.5rem;
@@ -551,7 +551,7 @@
     max-width: 560px;
   }
   .section-head.center p { margin: 0 auto; }
-
+ 
   /* Scroll reveal */
   .reveal {
     opacity: 0;
@@ -565,7 +565,7 @@
   .reveal.delay-1 { transition-delay: 0.1s; }
   .reveal.delay-2 { transition-delay: 0.2s; }
   .reveal.delay-3 { transition-delay: 0.3s; }
-
+ 
   /* ===== Experience Cards ===== */
   .experience-grid {
     display: grid;
@@ -574,7 +574,7 @@
   }
   @media (max-width: 1100px) { .experience-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .experience-grid { grid-template-columns: 1fr; } }
-
+ 
   .exp-card {
     position: relative;
     height: 460px;
@@ -635,7 +635,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-
+ 
   /* ===== Menu Section ===== */
   .menu-block {
     background: linear-gradient(180deg, var(--bg-0) 0%, #0a0508 50%, var(--bg-0) 100%);
@@ -682,7 +682,7 @@
     gap: 0 3.5rem;
   }
   @media (max-width: 800px) { .menu-items { grid-template-columns: 1fr; gap: 0; } }
-
+ 
   .menu-item {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -717,7 +717,7 @@
     0% { opacity: 0; transform: translateY(14px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-
+ 
   .menu-item-name {
     font-family: 'Playfair Display', serif;
     font-weight: 500;
@@ -749,7 +749,7 @@
     line-height: 1.55;
     font-weight: 300;
   }
-
+ 
   /* ===== Premium signature item — shimmering star ===== */
   .menu-item.signature .menu-item-name::after {
     content: '★';
@@ -772,7 +772,7 @@
     color: var(--platinum-soft);
     text-shadow: 0 0 12px rgba(232, 233, 236, 0.3);
   }
-
+ 
   @media (max-width: 600px) {
     .menu-item {
       padding: 1.2rem 0;
@@ -792,7 +792,7 @@
     text-align: center;
     margin-top: 4rem;
   }
-
+ 
   /* ===== Modal ===== */
   .modal-overlay {
     position: fixed;
@@ -868,7 +868,7 @@
     .modal { padding: 2rem 1.4rem; }
     .modal h2 { font-size: 1.8rem; }
   }
-
+ 
   /* ===== Events Section ===== */
   .events-block {
     background:
@@ -884,7 +884,7 @@
     align-items: start;
   }
   @media (max-width: 980px) { .events-grid { grid-template-columns: 1fr; gap: 3rem; } }
-
+ 
   .event-types {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -919,7 +919,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-
+ 
   /* Form */
   .booking-form {
     background: rgba(19, 19, 22, 0.72);
@@ -1010,7 +1010,7 @@
     letter-spacing: 0.1em;
   }
   .form-success.show { display: block; }
-
+ 
   /* ===== Gallery ===== */
   .gallery-grid {
     display: grid;
@@ -1060,7 +1060,7 @@
     transition: transform 0.4s;
   }
   .gallery-item:hover .gallery-cap { transform: translateY(0); }
-
+ 
   /* ===== Visit Section ===== */
   .visit-grid {
     display: grid;
@@ -1069,7 +1069,7 @@
     align-items: center;
   }
   @media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; gap: 3rem; } }
-
+ 
   .visit-info-block {
     padding: 1.6rem 0;
     border-top: 1px solid var(--line);
@@ -1084,7 +1084,7 @@
   }
   .visit-buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; }
   .visit-buttons .btn { padding: 0.85rem 1.4rem; font-size: 0.7rem; }
-
+ 
   /* Real Google Maps embed with dark-theme CSS overlay */
   .map-block {
     position: relative;
@@ -1147,7 +1147,7 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }
   }
-
+ 
   /* ===== Final CTA ===== */
   .final-cta {
     text-align: center;
@@ -1190,7 +1190,7 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-
+ 
   /* ===== Footer ===== */
   footer {
     background: #030303;
@@ -1207,7 +1207,7 @@
   }
   @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
   @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
-
+ 
   .footer-brand .logo { margin-bottom: 1rem; display: block; }
   .footer-brand p {
     color: var(--muted);
@@ -1253,7 +1253,7 @@
     font-weight: 500;
     font-size: 0.88rem;
   }
-
+ 
   /* ===== Mobile Sticky Bottom Bar ===== */
   .mobile-bar {
     display: none;
@@ -1297,7 +1297,10 @@
     .booking-form { padding: 1.8rem 1.4rem; }
     .final-cta { padding: 6rem 1.25rem; }
     footer { padding: 3rem 1.25rem 6rem; }
-
+ 
+    /* Hide scroll cue on mobile — CTAs already invite scrolling */
+    .scroll-cue { display: none; }
+ 
     /* Mobile menu polish */
     .menu-tabs {
       gap: 0.4rem;
@@ -1314,23 +1317,23 @@
     }
     .menu-tabs::-webkit-scrollbar { display: none; }
     .menu-tab { font-size: 0.68rem; padding: 0.6rem 1.05rem; }
-
+ 
     /* Hero pills wrap nicer */
     .pills { gap: 0.4rem; }
     .pill { padding: 0.4rem 0.85rem; font-size: 0.62rem; }
-
+ 
     /* Hero CTA stack */
     .hero-ctas { flex-direction: column; gap: 0.7rem; width: 100%; }
     .hero-ctas .btn { width: 100%; justify-content: center; }
-
+ 
     /* Section heads */
     .section-head { margin-bottom: 2.5rem; }
     .section-head h2 { font-size: 2.2rem; }
-
+ 
     /* Header */
     .logo { font-size: 1.05rem; letter-spacing: 0.24em; }
     .header .btn { padding: 0.65rem 1rem !important; font-size: 0.62rem !important; letter-spacing: 0.18em; }
-
+ 
     /* Modal */
     .modal { padding: 2rem 1.2rem; max-height: 88vh; }
     .modal h2 { font-size: 1.6rem; }
@@ -1344,13 +1347,13 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- Custom cursor (desktop only) -->
 <div class="cursor-vinyl" id="cursorVinyl">
   <div class="cursor-vinyl-disc"></div>
 </div>
 <div class="spotlight" id="spotlight"></div>
-
+ 
 <!-- ===================== HEADER ===================== -->
 <header class="header" id="header">
   <a href="#top" class="logo">PLATINUM NYC</a>
@@ -1364,7 +1367,7 @@
   </nav>
   <a href="#events" class="btn btn-gold" style="padding: 0.8rem 1.4rem; font-size: 0.7rem;">Reserve</a>
 </header>
-
+ 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
@@ -1406,7 +1409,7 @@
   </div>
   <div class="scroll-cue">Scroll</div>
 </section>
-
+ 
 <!-- ===================== EXPERIENCE ===================== -->
 <section class="block" id="experience">
   <div class="container">
@@ -1415,7 +1418,7 @@
       <h2>Sing louder.<br><em>Stay later.</em></h2>
       <p>Karaoke, bar, kitchen, and private events — designed for nights that feel special.</p>
     </div>
-
+ 
     <div class="experience-grid">
       <div class="exp-card reveal">
         <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
@@ -1426,7 +1429,7 @@
           <p>Sing your favorite tracks in a styled lounge with serious sound and zero ordinary energy.</p>
         </div>
       </div>
-
+ 
       <div class="exp-card reveal delay-1">
         <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
         <div class="exp-card-overlay"></div>
@@ -1436,7 +1439,7 @@
           <p>Signature mojitos, classic cocktails, espresso pours, and a dessert list worth ordering twice.</p>
         </div>
       </div>
-
+ 
       <div class="exp-card reveal delay-2">
         <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
         <div class="exp-card-overlay"></div>
@@ -1446,7 +1449,7 @@
           <p>Burgers, steaks, and salads — halal comfort food with European flair, served until late.</p>
         </div>
       </div>
-
+ 
       <div class="exp-card reveal delay-3">
         <div class="exp-card-img" data-src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80" style="background-image:url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
         <div class="exp-card-overlay"></div>
@@ -1459,7 +1462,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===================== MENU ===================== -->
 <section class="block menu-block" id="menu">
   <div class="container">
@@ -1468,7 +1471,7 @@
       <h2>Dinner before<br><em>the spotlight.</em></h2>
       <p>Burgers, steaks, salads, mojitos, coffee &amp; desserts. A taste of the full card.</p>
     </div>
-
+ 
     <div class="menu-tabs reveal" id="menuTabs">
       <button class="menu-tab active" data-cat="burgers">Burgers</button>
       <button class="menu-tab" data-cat="steaks">Steaks</button>
@@ -1477,17 +1480,17 @@
       <button class="menu-tab" data-cat="coffee">Coffee &amp; Desserts</button>
       <button class="menu-tab" data-cat="mojitos">Mojitos</button>
     </div>
-
+ 
     <div class="menu-items reveal" id="menuItems">
       <!-- Items injected by JS -->
     </div>
-
+ 
     <div class="menu-cta reveal">
       <button class="btn btn-gold" id="openMenu">Open Full Menu <span class="btn-arrow">→</span></button>
     </div>
   </div>
 </section>
-
+ 
 <!-- Menu Modal -->
 <div class="modal-overlay" id="menuModal">
   <div class="modal">
@@ -1495,7 +1498,7 @@
     <span class="label">Full Menu — Sample · Editable</span>
     <h2>Platinum<br><em style="color:var(--gold);font-style:italic;">Card</em></h2>
     <p style="color:var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">A preview of categories and items. Final menu and pricing will be confirmed with the kitchen.</p>
-
+ 
     <div class="modal-cat">
       <h3>Burgers</h3>
       <div class="menu-items" id="modalBurgers"></div>
@@ -1518,7 +1521,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ===================== EVENTS ===================== -->
 <section class="block events-block" id="events">
   <div class="container">
@@ -1530,7 +1533,7 @@
           Birthdays, corporate evenings, bachelor &amp; bachelorette parties, holiday nights, and private group reservations.
           From birthdays to corporate nights, Platinum gives your group a private stage.
         </p>
-
+ 
         <div class="event-types">
           <div class="event-pill"><span class="event-pill-num">01</span><span class="event-pill-name">Birthdays</span></div>
           <div class="event-pill"><span class="event-pill-num">02</span><span class="event-pill-name">Corporate</span></div>
@@ -1540,11 +1543,11 @@
           <div class="event-pill"><span class="event-pill-num">06</span><span class="event-pill-name">Friends Out</span></div>
         </div>
       </div>
-
+ 
       <form class="booking-form reveal delay-1" id="bookingForm">
         <span class="label" style="margin-bottom: 0.6rem; display:block;">Request a Booking</span>
         <h3 style="font-family:'Playfair Display',serif; font-weight:500; font-size:1.7rem; margin-bottom: 1.5rem;">Tell us about your night.</h3>
-
+ 
         <div class="form-group">
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -1590,7 +1593,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===================== GALLERY ===================== -->
 <section class="block" id="gallery">
   <div class="container">
@@ -1599,7 +1602,7 @@
       <h2>Inside <em>the lounge.</em></h2>
       <p>A glance at the room — late nights, signature drinks, and the moments in between.</p>
     </div>
-
+ 
     <div class="gallery-grid reveal">
       <!-- PLACEHOLDER IMAGES — replace with client / Instagram photos -->
       <div class="gallery-item">
@@ -1625,7 +1628,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===================== VISIT ===================== -->
 <section class="block" id="visit" style="background: linear-gradient(180deg, var(--bg-0), #08060a);">
   <div class="container">
@@ -1633,7 +1636,7 @@
       <div class="reveal">
         <span class="label">Find Us</span>
         <h2 style="font-size: clamp(2.4rem, 5vw, 4rem); margin: 1rem 0 2rem;">Hours &amp; <em>Location.</em></h2>
-
+ 
         <div class="visit-info-block">
           <span class="label-muted">Address <!-- EDITABLE --></span>
           <p>2085 Coney Island Ave<br>Brooklyn, NY</p>
@@ -1646,14 +1649,14 @@
           <span class="label-muted">Reservations <!-- EDITABLE --></span>
           <p>929-733-1310</p>
         </div>
-
+ 
         <div class="visit-buttons">
           <a href="tel:9297331310" class="btn btn-gold">Call to Reserve</a>
           <a href="https://maps.google.com/?q=2085+Coney+Island+Ave+Brooklyn+NY" target="_blank" rel="noopener" class="btn btn-ghost">Open in Maps</a>
           <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
         </div>
       </div>
-
+ 
       <div class="map-block reveal delay-1">
         <!-- Real Google Maps embed (no API key needed). Dark theme via CSS filter on the iframe. -->
         <!-- To swap the address: change the `q=` parameter in the URL below. -->
@@ -1668,7 +1671,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===================== FINAL CTA ===================== -->
 <section class="final-cta">
   <div class="final-cta-inner">
@@ -1681,7 +1684,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-grid">
@@ -1712,7 +1715,7 @@
     <span><em>Website concept preview — content and details can be adjusted after client approval.</em></span>
   </div>
 </footer>
-
+ 
 <!-- ===================== MOBILE BAR ===================== -->
 <div class="mobile-bar">
   <a href="tel:9297331310" aria-label="Call">
@@ -1725,12 +1728,12 @@
     Instagram
   </a>
 </div>
-
+ 
 <script>
   /* =============================================================
      INTERACTIONS
   ============================================================= */
-
+ 
   // ---------- Image fallback: never leave empty boxes ----------
   // For every element with a background-image URL, pre-load the image
   // in a hidden <img>. If it fails (404, blocked, slow CDN), apply
@@ -1750,14 +1753,14 @@
     test.src = url;
   }
   document.querySelectorAll('.gallery-img, .exp-card-img').forEach(verifyImage);
-
+ 
   // ---------- Header scroll state ----------
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
   });
-
+ 
   // ---------- Hero parallax ----------
   const heroBg = document.getElementById('heroBg');
   window.addEventListener('scroll', () => {
@@ -1766,7 +1769,7 @@
       heroBg.style.transform = `translateY(${y * 0.35}px) scale(${1 + y * 0.0003})`;
     }
   });
-
+ 
   // ---------- Custom cursor: spinning vinyl ----------
   const vinyl = document.getElementById('cursorVinyl');
   const spotlight = document.getElementById('spotlight');
@@ -1789,7 +1792,7 @@
     el.addEventListener('mouseenter', () => vinyl.classList.add('hover'));
     el.addEventListener('mouseleave', () => vinyl.classList.remove('hover'));
   });
-
+ 
   // ---------- Reveal on scroll ----------
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1800,7 +1803,7 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
+ 
   // ---------- "Play the Vibe" — CLUB BEAT generated via Web Audio API ----------
   // Live-synthesized 4-on-the-floor club loop with kick, hi-hat, sub-bass,
   // and a moody minor pluck chord. No MP3 needed for preview.
@@ -1813,17 +1816,17 @@
   let audioCtx = null;
   let beatScheduler = null;
   let masterGainNode = null;
-
+ 
   // Tempo: 118 BPM — classic deep house / lounge club tempo
   const BPM = 118;
   const SIXTEENTH = 60 / BPM / 4; // duration of a 16th note in seconds
-
+ 
   function createMasterChain(ctx) {
     // Master gain → lowpass filter → soft compression → destination
     const master = ctx.createGain();
     master.gain.value = 0;
     master.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 1.5); // fade in
-
+ 
     // Subtle compression for that "club" glue
     const comp = ctx.createDynamicsCompressor();
     comp.threshold.value = -18;
@@ -1831,12 +1834,12 @@
     comp.ratio.value = 4;
     comp.attack.value = 0.005;
     comp.release.value = 0.1;
-
+ 
     master.connect(comp);
     comp.connect(ctx.destination);
     return master;
   }
-
+ 
   // ---- Kick drum: punchy sine sweep ----
   function playKick(ctx, time, dest) {
     const osc = ctx.createOscillator();
@@ -1849,7 +1852,7 @@
     gain.connect(dest);
     osc.start(time);
     osc.stop(time + 0.45);
-
+ 
     // Click layer for attack
     const click = ctx.createOscillator();
     const clickGain = ctx.createGain();
@@ -1862,33 +1865,33 @@
     click.start(time);
     click.stop(time + 0.03);
   }
-
+ 
   // ---- Hi-hat: filtered white noise ----
   function playHiHat(ctx, time, dest, open = false) {
     const bufSize = ctx.sampleRate * 0.2;
     const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
     const data = buf.getChannelData(0);
     for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-
+ 
     const noise = ctx.createBufferSource();
     noise.buffer = buf;
-
+ 
     const hp = ctx.createBiquadFilter();
     hp.type = 'highpass';
     hp.frequency.value = 7000;
-
+ 
     const gain = ctx.createGain();
     const decay = open ? 0.18 : 0.05;
     gain.gain.setValueAtTime(open ? 0.18 : 0.22, time);
     gain.gain.exponentialRampToValueAtTime(0.001, time + decay);
-
+ 
     noise.connect(hp);
     hp.connect(gain);
     gain.connect(dest);
     noise.start(time);
     noise.stop(time + decay + 0.02);
   }
-
+ 
   // ---- Sub bass: rolling 8th-note pattern ----
   function playBass(ctx, time, freq, dest, duration = SIXTEENTH * 2) {
     const osc = ctx.createOscillator();
@@ -1897,21 +1900,21 @@
     filter.type = 'lowpass';
     filter.frequency.value = 400;
     filter.Q.value = 4;
-
+ 
     osc.type = 'sawtooth';
     osc.frequency.value = freq;
-
+ 
     gain.gain.setValueAtTime(0, time);
     gain.gain.linearRampToValueAtTime(0.35, time + 0.005);
     gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
-
+ 
     osc.connect(filter);
     filter.connect(gain);
     gain.connect(dest);
     osc.start(time);
     osc.stop(time + duration + 0.05);
   }
-
+ 
   // ---- Pluck chord: short detuned saw stab ----
   function playPluck(ctx, time, freqs, dest) {
     const filter = ctx.createBiquadFilter();
@@ -1919,12 +1922,12 @@
     filter.frequency.setValueAtTime(3000, time);
     filter.frequency.exponentialRampToValueAtTime(800, time + 0.4);
     filter.Q.value = 6;
-
+ 
     const gain = ctx.createGain();
     gain.gain.setValueAtTime(0, time);
     gain.gain.linearRampToValueAtTime(0.13, time + 0.005);
     gain.gain.exponentialRampToValueAtTime(0.001, time + 0.5);
-
+ 
     freqs.forEach(freq => {
       [-7, 0, 7].forEach(detune => {
         const osc = ctx.createOscillator();
@@ -1936,70 +1939,70 @@
         osc.stop(time + 0.55);
       });
     });
-
+ 
     filter.connect(gain);
     gain.connect(dest);
   }
-
+ 
   // ---- Bass pattern in A minor: A1, A1, E1, G1 (per bar) ----
   const bassPattern = [55.00, 55.00, 41.20, 49.00];
   // Pluck chord: Am7 (A3, C4, E4, G4)
   const pluckChord = [220.00, 261.63, 329.63, 392.00];
-
+ 
   function startBeatLoop(ctx, dest) {
     let bar = 0;
     let nextNoteTime = ctx.currentTime + 0.1;
-
+ 
     function scheduleBar() {
       const barStart = nextNoteTime;
       const beatDur = SIXTEENTH * 4; // quarter note
-
+ 
       // Kick on every beat (4-on-the-floor)
       for (let beat = 0; beat < 4; beat++) {
         playKick(ctx, barStart + beat * beatDur, dest);
       }
-
+ 
       // Closed hi-hat on every 8th, open hi-hat on the off-beat of beat 4
       for (let i = 0; i < 8; i++) {
         const t = barStart + i * (SIXTEENTH * 2);
         const isOpen = i === 7; // last off-beat of bar
         playHiHat(ctx, t + SIXTEENTH, dest, isOpen);
       }
-
+ 
       // Bass: one note per beat
       for (let beat = 0; beat < 4; beat++) {
         playBass(ctx, barStart + beat * beatDur, bassPattern[beat], dest, beatDur * 0.9);
       }
-
+ 
       // Pluck chord on beat 1 of every other bar, plus syncopated stab on beat 3.5
       if (bar % 2 === 0) {
         playPluck(ctx, barStart + beatDur * 2.5, pluckChord, dest);
       }
-
+ 
       nextNoteTime += beatDur * 4; // advance one bar
       bar++;
     }
-
+ 
     // Schedule next bars ahead of time for tight timing
     function tick() {
       while (nextNoteTime < ctx.currentTime + 0.3) {
         scheduleBar();
       }
     }
-
+ 
     tick();
     return setInterval(tick, 100);
   }
-
+ 
   vibeBtn.addEventListener('click', async () => {
     playing = !playing;
     vibeBtn.classList.toggle('playing', playing);
     eq.classList.toggle('playing', playing);
-
+ 
     if (playing) {
       vibeLabel.textContent = 'Vibe Playing';
       playIcon.setAttribute('points', '6 4 10 4 10 20 6 20 14 4 18 4 18 20 14 20');
-
+ 
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') await audioCtx.resume();
@@ -2011,7 +2014,7 @@
     } else {
       vibeLabel.textContent = 'Play the Vibe';
       playIcon.setAttribute('points', '5 3 19 12 5 21 5 3');
-
+ 
       // Smooth fade-out, then stop scheduler
       if (audioCtx && masterGainNode) {
         masterGainNode.gain.cancelScheduledValues(audioCtx.currentTime);
@@ -2024,7 +2027,7 @@
       }
     }
   });
-
+ 
   /* HOW_TO_REPLACE_AUDIO ===================================================
      OPTION A — Use your own MP3 / WAV file (recommended for production):
      ---------------------------------------------------------------------
@@ -2032,7 +2035,7 @@
      2. Delete EVERYTHING above this comment from "// Tempo: 118 BPM" down,
         including the entire vibeBtn click handler.
      3. Replace it with this 12-line version:
-
+ 
          const audio = new Audio('platinum-vibe.mp3');
          audio.loop = true;
          audio.volume = 0.45;
@@ -2050,17 +2053,17 @@
              playIcon.setAttribute('points', '5 3 19 12 5 21 5 3');
            }
          });
-
+ 
      OPTION B — Stream from SoundCloud / Spotify (legal-safe for a real bar):
      ---------------------------------------------------------------------
      Use the SoundCloud embed widget instead — gives you licensing coverage
      and lets the bar pick any DJ mix without uploading audio.
      Replace the vibe-row block in HTML with:
-
+ 
          <iframe width="100%" height="20" scrolling="no" frameborder="no"
            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/YOUR_PLAYLIST_ID&color=%23E8E9EC&auto_play=false&hide_related=true&show_comments=false">
          </iframe>
-
+ 
      OPTION C — Tweak THIS synthesized beat:
      ---------------------------------------------------------------------
      • Change BPM constant above (try 122-126 for harder house, 100 for downtempo)
@@ -2068,7 +2071,7 @@
      • Change pluckChord — try [261.63, 311.13, 392, 466.16] for Cm7 stabs
      • Increase master.gain target (line: linearRampToValueAtTime(0.55, ...)) up to 0.8 for louder
      ====================================================================== */
-
+ 
   // ---------- MENU DATA (sample · editable) ----------
   // Set `signature: true` on items you want to highlight as premium —
   // they get a shimmering platinum star + soft glow.
@@ -2110,7 +2113,7 @@
       { name: 'Mango Mojito', price: 'from $14', desc: 'Fresh mango, mint, lime, rum.' },
     ],
   };
-
+ 
   // ---------- Render menu items into the active tab ----------
   const menuItems = document.getElementById('menuItems');
   function renderMenu(cat) {
@@ -2124,7 +2127,7 @@
     `).join('');
   }
   renderMenu('burgers');
-
+ 
   document.querySelectorAll('.menu-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
@@ -2132,7 +2135,7 @@
       renderMenu(tab.dataset.cat);
     });
   });
-
+ 
   // ---------- Modal full menu ----------
   function renderModalCat(id, items) {
     document.getElementById(id).innerHTML = items.map((it, i) => `
@@ -2148,7 +2151,7 @@
   renderModalCat('modalSalads', menuData.salads);
   renderModalCat('modalMojitos', [...menuData.mojitos, ...menuData.drinks]);
   renderModalCat('modalCoffee', menuData.coffee);
-
+ 
   const modal = document.getElementById('menuModal');
   document.getElementById('openMenu').addEventListener('click', () => {
     modal.classList.add('open');
@@ -2170,7 +2173,7 @@
       document.body.style.overflow = '';
     }
   });
-
+ 
   // ---------- Booking form (static demo — replace with real backend) ----------
   document.getElementById('bookingForm').addEventListener('submit', (e) => {
     e.preventDefault();
