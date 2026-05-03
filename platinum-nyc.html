@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Platinum NYC — Karaoke Lounge · Bar · Kitchen · Brooklyn</title>
+<meta name="description" content="A premium karaoke lounge, bar & kitchen in Brooklyn. Private nights, birthdays, celebrations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================
+     PLATINUM NYC — Concept Preview
+     Replace placeholder text marked with /* EDITABLE */
+     /* and image URLs marked with /* PLACEHOLDER IMAGE */
+  /* ========================================================== */
+
+  :root {
+    --bg-0: #0A0B0D;
+    --bg-1: #0E0F12;
+    --bg-card: #14151A;
+    --bg-card-2: #1A1C22;
+
+    /* Platinum spectrum — cool silver with subtle blue undertone */
+    --platinum: #E8E9EC;        /* primary accent — bright platinum */
+    --platinum-soft: #F4F5F7;   /* highlight tip in gradients */
+    --platinum-deep: #8A8E96;   /* mid-tone for depth */
+    --platinum-shadow: #4A4D54; /* deepest tone for gradient anchors */
+    --platinum-blue: #BFC8D6;   /* subtle blue cast — the "real" platinum tell */
+
+    --wine: #3A0F1E;
+    --neon: #B86BFF;
+    --text: #F5F6F8;
+    --muted: #9CA0A8;
+    --line: rgba(232, 233, 236, 0.10);
+    --line-strong: rgba(232, 233, 236, 0.28);
+
+    /* Backwards-compat aliases — all existing 'gold' refs now resolve to platinum */
+    --gold: var(--platinum);
+    --gold-soft: var(--platinum-soft);
+    --gold-deep: var(--platinum-deep);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+  }
+
+  /* Subtle film grain overlay across whole page */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* ===== Custom Cursor: spinning vinyl record (desktop) ===== */
+  .cursor-vinyl {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+    will-change: left, top;
+  }
+  .cursor-vinyl-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background:
+      conic-gradient(from 45deg,
+        transparent 0deg, rgba(255,255,255,0.18) 50deg,
+        transparent 100deg, transparent 220deg,
+        rgba(255,255,255,0.1) 270deg, transparent 320deg),
+      repeating-radial-gradient(circle at center,
+        #0A0A0B 0px, #0A0A0B 1px,
+        #1a1a1d 1.5px, #1a1a1d 2.5px),
+      #0A0A0B;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(232, 233, 236, 0.18),
+      0 4px 12px rgba(0, 0, 0, 0.5),
+      inset 0 0 8px rgba(0, 0, 0, 0.6);
+    animation: vinyl-spin 1.4s linear infinite;
+  }
+  .cursor-vinyl-disc::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 38%; height: 38%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #F4F5F7 0%, #BFC8D6 55%, #8A8E96 100%);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.3),
+      inset 0 1px 2px rgba(255,255,255,0.4);
+  }
+  .cursor-vinyl-disc::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 4px; height: 4px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #0A0A0B;
+    box-shadow: 0 0 0 1px rgba(232, 233, 236, 0.3);
+  }
+  @keyframes vinyl-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .cursor-vinyl.hover {
+    width: 60px;
+    height: 60px;
+  }
+  .cursor-vinyl.hover .cursor-vinyl-disc {
+    animation-duration: 0.7s;
+    box-shadow:
+      0 0 0 1px rgba(232, 233, 236, 0.4),
+      0 0 20px rgba(232, 233, 236, 0.25),
+      0 4px 16px rgba(0, 0, 0, 0.6),
+      inset 0 0 8px rgba(0, 0, 0, 0.6);
+  }
+
+  @media (max-width: 900px) {
+    body { cursor: auto; }
+    .cursor-vinyl { display: none; }
+  }
+
+  /* Spotlight effect that follows cursor */
+  .spotlight {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(232, 233, 236, 0.06), transparent 40%);
+    mix-blend-mode: screen;
+    transition: opacity 0.5s;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+
+  .label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .label-muted {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ===== Header ===== */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.4rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+  }
+  .header.scrolled {
+    padding: 0.9rem 2.5rem;
+    background: rgba(8, 8, 10, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    color: var(--text);
+    background: linear-gradient(110deg, #8A8E96 0%, #E8E9EC 30%, #FFFFFF 50%, #E8E9EC 70%, #8A8E96 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .nav { display: flex; gap: 2.4rem; }
+  .nav a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.78;
+    transition: opacity 0.3s, color 0.3s;
+    position: relative;
+  }
+  .nav a:hover { opacity: 1; color: var(--gold); }
+  .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav a:hover::after { width: 100%; }
+  @media (max-width: 900px) {
+    .nav { display: none; }
+    .header { padding: 1rem 1.25rem; }
+    .header.scrolled { padding: 0.7rem 1.25rem; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, #F4F5F7 0%, #BFC8D6 35%, #E8E9EC 65%, #8A8E96 100%);
+    background-size: 200% 100%;
+    color: #0A0A0B;
+    background-position: 0% 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .btn-gold:hover {
+    background-position: 100% 50%;
+    box-shadow: 0 12px 40px -8px rgba(232, 233, 236, 0.45), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    transform: translateY(-2px);
+  }
+  .btn-gold:hover::before {
+    left: 125%;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(232, 233, 236, 0.28);
+  }
+  .btn-ghost:hover {
+    border-color: var(--platinum);
+    color: var(--platinum-soft);
+    background: rgba(232, 233, 236, 0.06);
+    box-shadow: inset 0 0 20px rgba(191, 200, 214, 0.08);
+  }
+  .btn-arrow {
+    transition: transform 0.3s;
+  }
+  .btn:hover .btn-arrow { transform: translateX(4px); }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 8rem 2.5rem 6rem;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* PLACEHOLDER IMAGE — replace with luxury lounge / karaoke / bar shot */
+    background-image: url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=2400&q=80');
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at top, rgba(58, 15, 30, 0.4) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10, 10, 11, 0.5) 0%, rgba(10, 10, 11, 0.7) 50%, rgba(10, 10, 11, 0.96) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow .line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-title {
+    font-size: clamp(3rem, 9vw, 8.5rem);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(180deg, #FFFFFF 0%, #E8E9EC 50%, #BFC8D6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .pill {
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(10px);
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Vibe button + equalizer */
+  .vibe-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  .vibe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 1.3rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .vibe-btn:hover {
+    border-color: var(--gold);
+    background: rgba(232, 233, 236, 0.07);
+  }
+  .vibe-btn.playing { color: var(--gold); border-color: var(--gold); }
+  .vibe-icon { width: 14px; height: 14px; }
+  .equalizer {
+    display: inline-flex;
+    align-items: end;
+    gap: 3px;
+    height: 20px;
+  }
+  .equalizer span {
+    display: block;
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    height: 4px;
+    opacity: 0.5;
+    animation: eq 1.4s ease-in-out infinite;
+  }
+  .vibe-btn.playing + .equalizer span,
+  .equalizer.playing span {
+    opacity: 1;
+  }
+  .equalizer span:nth-child(1) { animation-delay: 0s; }
+  .equalizer span:nth-child(2) { animation-delay: 0.2s; }
+  .equalizer span:nth-child(3) { animation-delay: 0.4s; }
+  .equalizer span:nth-child(4) { animation-delay: 0.1s; }
+  .equalizer span:nth-child(5) { animation-delay: 0.3s; }
+  @keyframes eq {
+    0%, 100% { height: 4px; }
+    50% { height: 20px; }
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .scroll-cue::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: scroll-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse {
+    0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  /* Image loading fallback — never show empty box if URL fails */
+  .img-fallback {
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(232, 233, 236, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(191, 200, 214, 0.06) 0%, transparent 50%),
+      linear-gradient(135deg, #1A1C22 0%, #14151A 50%, #0E0F12 100%) !important;
+    position: relative;
+  }
+  .img-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232, 233, 236, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 233, 236, 0.025) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.6;
+  }
+  .img-fallback::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 60px; height: 60px;
+    transform: translate(-50%, -50%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E8E9EC' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' y1='19' x2='12' y2='23'/%3E%3Cline x1='8' y1='23' x2='16' y2='23'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.18;
+  }
+
+  /* ===== Section Base ===== */
+  section.block {
+    padding: 8rem 2.5rem;
+    position: relative;
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-head {
+    margin-bottom: 4rem;
+    max-width: 720px;
+  }
+  .section-head.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .section-head h2 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    margin: 1rem 0 1rem;
+    letter-spacing: -0.02em;
+  }
+  .section-head h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+  }
+  .section-head p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+  }
+  .section-head.center p { margin: 0 auto; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+
+  /* ===== Experience Cards ===== */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+  @media (max-width: 1100px) { .experience-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .experience-grid { grid-template-columns: 1fr; } }
+
+  .exp-card {
+    position: relative;
+    height: 460px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .exp-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--line-strong);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 60px -20px rgba(232, 233, 236, 0.18);
+  }
+  .exp-card-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .exp-card:hover .exp-card-img { transform: scale(1.08); }
+  .exp-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.95) 100%);
+  }
+  .exp-card-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.6rem;
+    z-index: 2;
+  }
+  .exp-card-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+  }
+  .exp-card h3 {
+    font-size: 1.7rem;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .exp-card p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .exp-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== Menu Section ===== */
+  .menu-block {
+    background: linear-gradient(180deg, var(--bg-0) 0%, #0a0508 50%, var(--bg-0) 100%);
+    position: relative;
+  }
+  .menu-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(58, 15, 30, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .menu-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+  }
+  .menu-tab {
+    padding: 0.7rem 1.3rem;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .menu-tab:hover { color: var(--text); border-color: var(--platinum); }
+  .menu-tab.active {
+    background: var(--gold);
+    color: #0A0A0B;
+    border-color: var(--gold);
+  }
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 3.5rem;
+  }
+  @media (max-width: 800px) { .menu-items { grid-template-columns: 1fr; gap: 0; } }
+
+  .menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name price"
+      "desc desc";
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px dashed var(--line);
+    opacity: 0;
+    animation: menuItemIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    position: relative;
+    transition: padding 0.35s ease;
+  }
+  .menu-item:hover {
+    padding-left: 0.8rem;
+  }
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 3px; height: 0;
+    background: linear-gradient(180deg, transparent, var(--platinum), transparent);
+    transform: translateY(-50%);
+    transition: height 0.4s ease;
+  }
+  .menu-item:hover::before {
+    height: 70%;
+  }
+  @keyframes menuItemIn {
+    0% { opacity: 0; transform: translateY(14px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-item-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--text);
+    grid-area: name;
+    line-height: 1.3;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .menu-item:hover .menu-item-name {
+    color: var(--platinum-soft);
+  }
+  .menu-item-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    color: var(--platinum);
+    letter-spacing: 0.05em;
+    grid-area: price;
+    align-self: start;
+    padding-top: 0.5rem;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+  .menu-item-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(232, 233, 236, 0.55);
+    grid-area: desc;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ===== Premium signature item — shimmering star ===== */
+  .menu-item.signature .menu-item-name::after {
+    content: '★';
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.7em;
+    background: linear-gradient(110deg, #8A8E96 0%, #FFFFFF 30%, #BFC8D6 50%, #FFFFFF 70%, #8A8E96 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+  .menu-item.signature {
+    background: linear-gradient(90deg, rgba(232, 233, 236, 0.025) 0%, transparent 70%);
+  }
+  .menu-item.signature .menu-item-price {
+    color: var(--platinum-soft);
+    text-shadow: 0 0 12px rgba(232, 233, 236, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    .menu-item {
+      padding: 1.2rem 0;
+    }
+    .menu-item-name {
+      font-size: 1.15rem;
+    }
+    .menu-item-price {
+      font-size: 0.8rem;
+      padding-top: 0.35rem;
+    }
+    .menu-item-desc {
+      font-size: 0.78rem;
+    }
+  }
+  .menu-cta {
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  /* ===== Modal ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(10,10,11,0.82);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-card-2) 100%);
+    border: 1px solid var(--line-strong);
+    max-width: 1000px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 3rem;
+    position: relative;
+    border-radius: 4px;
+    transform: scale(0.96);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--gold), transparent 50%, var(--gold));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+  .modal-close:hover { border-color: var(--gold); color: var(--gold); transform: rotate(90deg); }
+  .modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .modal-cat {
+    margin-top: 2.5rem;
+  }
+  .modal-cat h3 {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line-strong);
+    font-style: italic;
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .modal { padding: 2rem 1.4rem; }
+    .modal h2 { font-size: 1.8rem; }
+  }
+
+  /* ===== Events Section ===== */
+  .events-block {
+    background:
+      linear-gradient(rgba(10,10,11,0.86), rgba(10,10,11,0.94)),
+      url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=2000&q=80') center/cover; /* PLACEHOLDER IMAGE */
+    background-attachment: fixed;
+    position: relative;
+  }
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 980px) { .events-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .event-types {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .event-pill {
+    padding: 1.2rem 1rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line);
+    transition: all 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .event-pill:hover {
+    border-color: var(--gold);
+    background: rgba(232, 233, 236, 0.05);
+  }
+  .event-pill-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .event-pill-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Form */
+  .booking-form {
+    background: rgba(19, 19, 22, 0.72);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--line-strong);
+    padding: 2.5rem;
+    position: relative;
+    border-radius: 4px;
+  }
+  .booking-form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(232, 233, 236, 0.65), transparent 50%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(232, 233, 236, 0.15);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    border-radius: 2px;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(232, 233, 236, 0.35);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(0,0,0,0.7);
+    box-shadow: 0 0 0 3px rgba(232, 233, 236, 0.08);
+  }
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: 'Outfit', sans-serif;
+  }
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E8E9EC' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  .form-success {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(232, 233, 236, 0.12);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.85rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  .form-success.show { display: block; }
+
+  /* ===== Gallery ===== */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 280px 280px;
+    gap: 0.8rem;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  @media (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 220px 220px 220px;
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  }
+  .gallery-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .gallery-item:hover .gallery-img { transform: scale(1.1); }
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.85) 100%);
+    display: flex;
+    align-items: end;
+    padding: 1.5rem;
+    opacity: 0.6;
+    transition: opacity 0.4s;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-cap {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--text);
+    transform: translateY(8px);
+    transition: transform 0.4s;
+  }
+  .gallery-item:hover .gallery-cap { transform: translateY(0); }
+
+  /* ===== Visit Section ===== */
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .visit-info-block {
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .visit-info-block:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
+  .visit-info-block .label-muted { margin-bottom: 0.6rem; display: block; }
+  .visit-info-block p {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    color: var(--text);
+  }
+  .visit-buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .visit-buttons .btn { padding: 0.85rem 1.4rem; font-size: 0.7rem; }
+
+  /* Real Google Maps embed with dark-theme CSS overlay */
+  .map-block {
+    position: relative;
+    height: 460px;
+    background: var(--bg-card);
+    border: 1px solid var(--line-strong);
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .map-block iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Dark-theme treatment without requiring a Maps API key.
+       invert + hue-rotate flips Google's default light map into a dark variant. */
+    filter: invert(0.92) hue-rotate(180deg) saturate(0.7) contrast(0.92) brightness(0.95);
+  }
+  /* Gold tint overlay to bring back the brand atmosphere on top of the dark map */
+  .map-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(10, 10, 11, 0.35) 100%),
+      linear-gradient(180deg, rgba(232, 233, 236, 0.04), transparent 40%);
+    mix-blend-mode: multiply;
+  }
+  .map-label {
+    position: absolute;
+    bottom: 1.2rem; left: 1.2rem;
+    background: rgba(10,10,11,0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--line-strong);
+    padding: 0.7rem 1.1rem;
+    z-index: 3;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .map-label::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold);
+    animation: map-pulse 2s ease-in-out infinite;
+  }
+  @keyframes map-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ===== Final CTA ===== */
+  .final-cta {
+    text-align: center;
+    padding: 10rem 2.5rem;
+    background:
+      radial-gradient(ellipse at center, rgba(58, 15, 30, 0.4) 0%, transparent 60%),
+      var(--bg-0);
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 800px 400px at center, rgba(232, 233, 236,0.09) 0%, transparent 70%);
+  }
+  .final-cta-inner { position: relative; z-index: 2; }
+  .final-cta h2 {
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .final-cta h2 em {
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(180deg, #FFFFFF 0%, #E8E9EC 50%, #BFC8D6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .final-cta p {
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.05rem;
+  }
+  .final-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    background: #030303;
+    padding: 4rem 2.5rem 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+  @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .footer-brand .logo { margin-bottom: 1rem; display: block; }
+  .footer-brand p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .footer-bottom em {
+    color: var(--gold);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 0.88rem;
+  }
+
+  /* ===== Mobile Sticky Bottom Bar ===== */
+  .mobile-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 90;
+    background: rgba(8, 8, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--line-strong);
+    padding: 0.7rem 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .mobile-bar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.6rem 0.4rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    transition: all 0.3s;
+  }
+  .mobile-bar a.primary {
+    background: var(--gold);
+    color: #0A0A0B;
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+  .mobile-bar a:active { transform: scale(0.96); }
+  @media (max-width: 700px) {
+    .mobile-bar { display: grid; }
+    body { padding-bottom: 70px; }
+    section.block { padding: 5rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 5rem; min-height: 90vh; }
+    .booking-form { padding: 1.8rem 1.4rem; }
+    .final-cta { padding: 6rem 1.25rem; }
+    footer { padding: 3rem 1.25rem 6rem; }
+
+    /* Mobile menu polish */
+    .menu-tabs {
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .menu-tabs::-webkit-scrollbar { display: none; }
+    .menu-tab { font-size: 0.68rem; padding: 0.6rem 1.05rem; }
+
+    /* Hero pills wrap nicer */
+    .pills { gap: 0.4rem; }
+    .pill { padding: 0.4rem 0.85rem; font-size: 0.62rem; }
+
+    /* Hero CTA stack */
+    .hero-ctas { flex-direction: column; gap: 0.7rem; width: 100%; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+
+    /* Section heads */
+    .section-head { margin-bottom: 2.5rem; }
+    .section-head h2 { font-size: 2.2rem; }
+
+    /* Header */
+    .logo { font-size: 1.05rem; letter-spacing: 0.24em; }
+    .header .btn { padding: 0.65rem 1rem !important; font-size: 0.62rem !important; letter-spacing: 0.18em; }
+
+    /* Modal */
+    .modal { padding: 2rem 1.2rem; max-height: 88vh; }
+    .modal h2 { font-size: 1.6rem; }
+    .modal-cat h3 { font-size: 1.15rem; }
+  }
+  @media (max-width: 400px) {
+    .hero-title { font-size: 2.6rem !important; }
+    .menu-item-name { font-size: 1.05rem; }
+    .pill { font-size: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor (desktop only) -->
+<div class="cursor-vinyl" id="cursorVinyl">
+  <div class="cursor-vinyl-disc"></div>
+</div>
+<div class="spotlight" id="spotlight"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header" id="header">
+  <a href="#top" class="logo">PLATINUM NYC</a>
+  <nav class="nav">
+    <a href="#top">Home</a>
+    <a href="#experience">Experience</a>
+    <a href="#menu">Menu</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+  </nav>
+  <a href="#events" class="btn btn-gold" style="padding: 0.8rem 1.4rem; font-size: 0.7rem;">Reserve</a>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal in">
+      <span class="line"></span>
+      <span class="label">Karaoke · Bar · Kitchen</span>
+      <span class="line"></span>
+    </div>
+    <h1 class="hero-title reveal in delay-1">
+      Platinum Nights<br>
+      <em>in Brooklyn</em>
+    </h1>
+    <p class="hero-sub reveal in delay-2">
+      A premium karaoke lounge, bar &amp; kitchen for private nights, birthdays,
+      and celebrations that earn their own playlist.
+    </p>
+    <div class="pills reveal in delay-2">
+      <span class="pill">Open 7 Days</span> <!-- EDITABLE -->
+      <span class="pill">5 PM – Late</span> <!-- EDITABLE -->
+      <span class="pill">Brooklyn, NY</span>
+      <span class="pill">Halal Kitchen</span>
+    </div>
+    <div class="hero-ctas reveal in delay-3">
+      <a href="#events" class="btn btn-gold">Reserve a Night <span class="btn-arrow">→</span></a>
+      <a href="#menu" class="btn btn-ghost">View Menu</a>
+    </div>
+    <div class="vibe-row reveal in delay-3">
+      <button class="vibe-btn" id="vibeBtn" aria-label="Toggle ambient sound experience">
+        <svg class="vibe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <polygon points="5 3 19 12 5 21 5 3" id="playIcon"></polygon>
+        </svg>
+        <span id="vibeLabel">Play the Vibe</span>
+      </button>
+      <div class="equalizer" id="eq">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="block" id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">The Experience</span>
+      <h2>Sing louder.<br><em>Stay later.</em></h2>
+      <p>Karaoke, bar, kitchen, and private events — designed for nights that feel special.</p>
+    </div>
+
+    <div class="experience-grid">
+      <div class="exp-card reveal">
+        <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-content">
+          <div class="exp-card-num">01 — Karaoke</div>
+          <h3>Karaoke Nights</h3>
+          <p>Sing your favorite tracks in a styled lounge with serious sound and zero ordinary energy.</p>
+        </div>
+      </div>
+
+      <div class="exp-card reveal delay-1">
+        <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-content">
+          <div class="exp-card-num">02 — Bar</div>
+          <h3>Bar &amp; Mojitos</h3>
+          <p>Signature mojitos, classic cocktails, espresso pours, and a dessert list worth ordering twice.</p>
+        </div>
+      </div>
+
+      <div class="exp-card reveal delay-2">
+        <div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-content">
+          <div class="exp-card-num">03 — Kitchen</div>
+          <h3>The Kitchen</h3>
+          <p>Burgers, steaks, and salads — halal comfort food with European flair, served until late.</p>
+        </div>
+      </div>
+
+      <div class="exp-card reveal delay-3">
+        <div class="exp-card-img" data-src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80" style="background-image:url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80');"></div> <!-- PLACEHOLDER IMAGE -->
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-content">
+          <div class="exp-card-num">04 — Private</div>
+          <h3>Private Celebrations</h3>
+          <p>Birthdays, corporate nights, bachelorettes — your group, your stage, your night.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<section class="block menu-block" id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label">The Menu — Sample Card · Editable</span>
+      <h2>Dinner before<br><em>the spotlight.</em></h2>
+      <p>Burgers, steaks, salads, mojitos, coffee &amp; desserts. A taste of the full card.</p>
+    </div>
+
+    <div class="menu-tabs reveal" id="menuTabs">
+      <button class="menu-tab active" data-cat="burgers">Burgers</button>
+      <button class="menu-tab" data-cat="steaks">Steaks</button>
+      <button class="menu-tab" data-cat="salads">Salads</button>
+      <button class="menu-tab" data-cat="drinks">Drinks</button>
+      <button class="menu-tab" data-cat="coffee">Coffee &amp; Desserts</button>
+      <button class="menu-tab" data-cat="mojitos">Mojitos</button>
+    </div>
+
+    <div class="menu-items reveal" id="menuItems">
+      <!-- Items injected by JS -->
+    </div>
+
+    <div class="menu-cta reveal">
+      <button class="btn btn-gold" id="openMenu">Open Full Menu <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Modal -->
+<div class="modal-overlay" id="menuModal">
+  <div class="modal">
+    <button class="modal-close" id="closeMenu" aria-label="Close menu">✕</button>
+    <span class="label">Full Menu — Sample · Editable</span>
+    <h2>Platinum<br><em style="color:var(--gold);font-style:italic;">Card</em></h2>
+    <p style="color:var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">A preview of categories and items. Final menu and pricing will be confirmed with the kitchen.</p>
+
+    <div class="modal-cat">
+      <h3>Burgers</h3>
+      <div class="menu-items" id="modalBurgers"></div>
+    </div>
+    <div class="modal-cat">
+      <h3>Steaks</h3>
+      <div class="menu-items" id="modalSteaks"></div>
+    </div>
+    <div class="modal-cat">
+      <h3>Salads</h3>
+      <div class="menu-items" id="modalSalads"></div>
+    </div>
+    <div class="modal-cat">
+      <h3>Mojitos &amp; Cocktails</h3>
+      <div class="menu-items" id="modalMojitos"></div>
+    </div>
+    <div class="modal-cat">
+      <h3>Coffee &amp; Desserts</h3>
+      <div class="menu-items" id="modalCoffee"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EVENTS ===================== -->
+<section class="block events-block" id="events">
+  <div class="container">
+    <div class="events-grid">
+      <div class="reveal">
+        <span class="label">Private Events</span>
+        <h2 style="font-size: clamp(2.4rem, 5vw, 4.2rem); margin: 1rem 0 1rem;">Host Your Night<br><em>at Platinum.</em></h2>
+        <p style="color: var(--muted); font-size: 1.05rem; max-width: 480px;">
+          Birthdays, corporate evenings, bachelor &amp; bachelorette parties, holiday nights, and private group reservations.
+          From birthdays to corporate nights, Platinum gives your group a private stage.
+        </p>
+
+        <div class="event-types">
+          <div class="event-pill"><span class="event-pill-num">01</span><span class="event-pill-name">Birthdays</span></div>
+          <div class="event-pill"><span class="event-pill-num">02</span><span class="event-pill-name">Corporate</span></div>
+          <div class="event-pill"><span class="event-pill-num">03</span><span class="event-pill-name">Private Karaoke</span></div>
+          <div class="event-pill"><span class="event-pill-num">04</span><span class="event-pill-name">Holidays</span></div>
+          <div class="event-pill"><span class="event-pill-num">05</span><span class="event-pill-name">Date Nights</span></div>
+          <div class="event-pill"><span class="event-pill-num">06</span><span class="event-pill-name">Friends Out</span></div>
+        </div>
+      </div>
+
+      <form class="booking-form reveal delay-1" id="bookingForm">
+        <span class="label" style="margin-bottom: 0.6rem; display:block;">Request a Booking</span>
+        <h3 style="font-family:'Playfair Display',serif; font-weight:500; font-size:1.7rem; margin-bottom: 1.5rem;">Tell us about your night.</h3>
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(___) ___-____" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event">Event Type</label>
+            <select id="event" name="event">
+              <option>Birthday</option>
+              <option>Corporate</option>
+              <option>Private Karaoke</option>
+              <option>Holiday Celebration</option>
+              <option>Date Night</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guests">Guests</label>
+            <input type="number" id="guests" name="guests" min="1" placeholder="6" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="form-group">
+          <label for="msg">Message</label>
+          <textarea id="msg" name="msg" placeholder="Anything we should know? Songs, dietary notes, decor…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Request Event Booking <span class="btn-arrow">→</span></button>
+        <div class="form-success" id="formSuccess">✓ Request received. We'll be in touch shortly.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="block" id="gallery">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="label">Atmosphere</span>
+      <h2>Inside <em>the lounge.</em></h2>
+      <p>A glance at the room — late nights, signature drinks, and the moments in between.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <!-- PLACEHOLDER IMAGES — replace with client / Instagram photos -->
+      <div class="gallery-item">
+        <div class="gallery-img" data-src="https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?w=1400&q=80" style="background-image:url('https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?w=1400&q=80');"></div>
+        <div class="gallery-overlay"><span class="gallery-cap">Late-night karaoke</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=900&q=80');"></div>
+        <div class="gallery-overlay"><span class="gallery-cap">Signature drinks</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=900&q=80');"></div>
+        <div class="gallery-overlay"><span class="gallery-cap">Private celebrations</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80');"></div>
+        <div class="gallery-overlay"><span class="gallery-cap">Dinner before the music</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=80');"></div>
+        <div class="gallery-overlay"><span class="gallery-cap">Brooklyn lounge atmosphere</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section class="block" id="visit" style="background: linear-gradient(180deg, var(--bg-0), #08060a);">
+  <div class="container">
+    <div class="visit-grid">
+      <div class="reveal">
+        <span class="label">Find Us</span>
+        <h2 style="font-size: clamp(2.4rem, 5vw, 4rem); margin: 1rem 0 2rem;">Hours &amp; <em>Location.</em></h2>
+
+        <div class="visit-info-block">
+          <span class="label-muted">Address <!-- EDITABLE --></span>
+          <p>2085 Coney Island Ave<br>Brooklyn, NY</p>
+        </div>
+        <div class="visit-info-block">
+          <span class="label-muted">Hours <!-- EDITABLE --></span>
+          <p>Open 7 days · 5 PM – Late</p>
+        </div>
+        <div class="visit-info-block">
+          <span class="label-muted">Reservations <!-- EDITABLE --></span>
+          <p>929-733-1310</p>
+        </div>
+
+        <div class="visit-buttons">
+          <a href="tel:9297331310" class="btn btn-gold">Call to Reserve</a>
+          <a href="https://maps.google.com/?q=2085+Coney+Island+Ave+Brooklyn+NY" target="_blank" rel="noopener" class="btn btn-ghost">Open in Maps</a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn btn-ghost">Instagram</a>
+        </div>
+      </div>
+
+      <div class="map-block reveal delay-1">
+        <!-- Real Google Maps embed (no API key needed). Dark theme via CSS filter on the iframe. -->
+        <!-- To swap the address: change the `q=` parameter in the URL below. -->
+        <iframe
+          src="https://www.google.com/maps?q=2085+Coney+Island+Ave+Brooklyn+NY&hl=en&z=15&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Platinum NYC location map">
+        </iframe>
+        <div class="map-label">Platinum NYC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="label">Reserve · Celebrate · Sing</span>
+    <h2 style="margin-top: 1.2rem;">Your night starts<br><em>at Platinum.</em></h2>
+    <p>Reserve a table, plan a celebration, or stop by for karaoke, food &amp; drinks.</p>
+    <div class="final-buttons">
+      <a href="#events" class="btn btn-gold">Reserve Now <span class="btn-arrow">→</span></a>
+      <a href="#events" class="btn btn-ghost">Plan an Event</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">PLATINUM NYC</span>
+      <p>Karaoke · Bar · Kitchen · Events. A premium lounge in Brooklyn for nights that deserve more than ordinary.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <p>2085 Coney Island Ave<br>Brooklyn, NY</p> <!-- EDITABLE -->
+      <p>Open 7 Days · 5 PM – Late</p> <!-- EDITABLE -->
+    </div>
+    <div class="footer-col">
+      <h4>Reserve</h4>
+      <a href="tel:9297331310">929-733-1310</a> <!-- EDITABLE -->
+      <a href="#events">Book a Table</a>
+      <a href="#events">Plan an Event</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Platinum NYC · All rights reserved.</span>
+    <span><em>Website concept preview — content and details can be adjusted after client approval.</em></span>
+  </div>
+</footer>
+
+<!-- ===================== MOBILE BAR ===================== -->
+<div class="mobile-bar">
+  <a href="tel:9297331310" aria-label="Call">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="#events" class="primary">Reserve</a>
+  <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    Instagram
+  </a>
+</div>
+
+<script>
+  /* =============================================================
+     INTERACTIONS
+  ============================================================= */
+
+  // ---------- Image fallback: never leave empty boxes ----------
+  // For every element with a background-image URL, pre-load the image
+  // in a hidden <img>. If it fails (404, blocked, slow CDN), apply
+  // .img-fallback class which shows a styled platinum-tone gradient
+  // with a microphone icon — keeps the page premium even offline.
+  function verifyImage(el) {
+    const bg = el.style.backgroundImage;
+    const match = bg.match(/url\(["']?(.+?)["']?\)/);
+    if (!match) return;
+    const url = match[1];
+    const test = new Image();
+    test.onerror = () => el.classList.add('img-fallback');
+    // Modern browsers fire onload even for cached images, so check naturalWidth
+    test.onload = () => {
+      if (test.naturalWidth === 0) el.classList.add('img-fallback');
+    };
+    test.src = url;
+  }
+  document.querySelectorAll('.gallery-img, .exp-card-img').forEach(verifyImage);
+
+  // ---------- Header scroll state ----------
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // ---------- Hero parallax ----------
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroBg.style.transform = `translateY(${y * 0.35}px) scale(${1 + y * 0.0003})`;
+    }
+  });
+
+  // ---------- Custom cursor: spinning vinyl ----------
+  const vinyl = document.getElementById('cursorVinyl');
+  const spotlight = document.getElementById('spotlight');
+  let mx = 0, my = 0, vx = 0, vy = 0;
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    spotlight.style.setProperty('--mx', mx + 'px');
+    spotlight.style.setProperty('--my', my + 'px');
+  });
+  function animVinyl() {
+    // Smooth follow with slight lag for premium feel
+    vx += (mx - vx) * 0.22;
+    vy += (my - vy) * 0.22;
+    vinyl.style.left = vx + 'px';
+    vinyl.style.top = vy + 'px';
+    requestAnimationFrame(animVinyl);
+  }
+  animVinyl();
+  document.querySelectorAll('a, button, .exp-card, .gallery-item, .event-pill, .menu-tab, .menu-item').forEach(el => {
+    el.addEventListener('mouseenter', () => vinyl.classList.add('hover'));
+    el.addEventListener('mouseleave', () => vinyl.classList.remove('hover'));
+  });
+
+  // ---------- Reveal on scroll ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- "Play the Vibe" — CLUB BEAT generated via Web Audio API ----------
+  // Live-synthesized 4-on-the-floor club loop with kick, hi-hat, sub-bass,
+  // and a moody minor pluck chord. No MP3 needed for preview.
+  // To swap for a real DJ track, see HOW_TO_REPLACE_AUDIO at the bottom.
+  const vibeBtn = document.getElementById('vibeBtn');
+  const vibeLabel = document.getElementById('vibeLabel');
+  const playIcon = document.getElementById('playIcon');
+  const eq = document.getElementById('eq');
+  let playing = false;
+  let audioCtx = null;
+  let beatScheduler = null;
+  let masterGainNode = null;
+
+  // Tempo: 118 BPM — classic deep house / lounge club tempo
+  const BPM = 118;
+  const SIXTEENTH = 60 / BPM / 4; // duration of a 16th note in seconds
+
+  function createMasterChain(ctx) {
+    // Master gain → lowpass filter → soft compression → destination
+    const master = ctx.createGain();
+    master.gain.value = 0;
+    master.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 1.5); // fade in
+
+    // Subtle compression for that "club" glue
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -18;
+    comp.knee.value = 12;
+    comp.ratio.value = 4;
+    comp.attack.value = 0.005;
+    comp.release.value = 0.1;
+
+    master.connect(comp);
+    comp.connect(ctx.destination);
+    return master;
+  }
+
+  // ---- Kick drum: punchy sine sweep ----
+  function playKick(ctx, time, dest) {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.setValueAtTime(150, time);
+    osc.frequency.exponentialRampToValueAtTime(45, time + 0.12);
+    gain.gain.setValueAtTime(0.9, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.4);
+    osc.connect(gain);
+    gain.connect(dest);
+    osc.start(time);
+    osc.stop(time + 0.45);
+
+    // Click layer for attack
+    const click = ctx.createOscillator();
+    const clickGain = ctx.createGain();
+    click.type = 'triangle';
+    click.frequency.value = 800;
+    clickGain.gain.setValueAtTime(0.3, time);
+    clickGain.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+    click.connect(clickGain);
+    clickGain.connect(dest);
+    click.start(time);
+    click.stop(time + 0.03);
+  }
+
+  // ---- Hi-hat: filtered white noise ----
+  function playHiHat(ctx, time, dest, open = false) {
+    const bufSize = ctx.sampleRate * 0.2;
+    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+
+    const noise = ctx.createBufferSource();
+    noise.buffer = buf;
+
+    const hp = ctx.createBiquadFilter();
+    hp.type = 'highpass';
+    hp.frequency.value = 7000;
+
+    const gain = ctx.createGain();
+    const decay = open ? 0.18 : 0.05;
+    gain.gain.setValueAtTime(open ? 0.18 : 0.22, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + decay);
+
+    noise.connect(hp);
+    hp.connect(gain);
+    gain.connect(dest);
+    noise.start(time);
+    noise.stop(time + decay + 0.02);
+  }
+
+  // ---- Sub bass: rolling 8th-note pattern ----
+  function playBass(ctx, time, freq, dest, duration = SIXTEENTH * 2) {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 400;
+    filter.Q.value = 4;
+
+    osc.type = 'sawtooth';
+    osc.frequency.value = freq;
+
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.35, time + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(dest);
+    osc.start(time);
+    osc.stop(time + duration + 0.05);
+  }
+
+  // ---- Pluck chord: short detuned saw stab ----
+  function playPluck(ctx, time, freqs, dest) {
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(3000, time);
+    filter.frequency.exponentialRampToValueAtTime(800, time + 0.4);
+    filter.Q.value = 6;
+
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.13, time + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.5);
+
+    freqs.forEach(freq => {
+      [-7, 0, 7].forEach(detune => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sawtooth';
+        osc.frequency.value = freq;
+        osc.detune.value = detune;
+        osc.connect(filter);
+        osc.start(time);
+        osc.stop(time + 0.55);
+      });
+    });
+
+    filter.connect(gain);
+    gain.connect(dest);
+  }
+
+  // ---- Bass pattern in A minor: A1, A1, E1, G1 (per bar) ----
+  const bassPattern = [55.00, 55.00, 41.20, 49.00];
+  // Pluck chord: Am7 (A3, C4, E4, G4)
+  const pluckChord = [220.00, 261.63, 329.63, 392.00];
+
+  function startBeatLoop(ctx, dest) {
+    let bar = 0;
+    let nextNoteTime = ctx.currentTime + 0.1;
+
+    function scheduleBar() {
+      const barStart = nextNoteTime;
+      const beatDur = SIXTEENTH * 4; // quarter note
+
+      // Kick on every beat (4-on-the-floor)
+      for (let beat = 0; beat < 4; beat++) {
+        playKick(ctx, barStart + beat * beatDur, dest);
+      }
+
+      // Closed hi-hat on every 8th, open hi-hat on the off-beat of beat 4
+      for (let i = 0; i < 8; i++) {
+        const t = barStart + i * (SIXTEENTH * 2);
+        const isOpen = i === 7; // last off-beat of bar
+        playHiHat(ctx, t + SIXTEENTH, dest, isOpen);
+      }
+
+      // Bass: one note per beat
+      for (let beat = 0; beat < 4; beat++) {
+        playBass(ctx, barStart + beat * beatDur, bassPattern[beat], dest, beatDur * 0.9);
+      }
+
+      // Pluck chord on beat 1 of every other bar, plus syncopated stab on beat 3.5
+      if (bar % 2 === 0) {
+        playPluck(ctx, barStart + beatDur * 2.5, pluckChord, dest);
+      }
+
+      nextNoteTime += beatDur * 4; // advance one bar
+      bar++;
+    }
+
+    // Schedule next bars ahead of time for tight timing
+    function tick() {
+      while (nextNoteTime < ctx.currentTime + 0.3) {
+        scheduleBar();
+      }
+    }
+
+    tick();
+    return setInterval(tick, 100);
+  }
+
+  vibeBtn.addEventListener('click', async () => {
+    playing = !playing;
+    vibeBtn.classList.toggle('playing', playing);
+    eq.classList.toggle('playing', playing);
+
+    if (playing) {
+      vibeLabel.textContent = 'Vibe Playing';
+      playIcon.setAttribute('points', '6 4 10 4 10 20 6 20 14 4 18 4 18 20 14 20');
+
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') await audioCtx.resume();
+        masterGainNode = createMasterChain(audioCtx);
+        beatScheduler = startBeatLoop(audioCtx, masterGainNode);
+      } catch (err) {
+        console.warn('Audio unavailable:', err);
+      }
+    } else {
+      vibeLabel.textContent = 'Play the Vibe';
+      playIcon.setAttribute('points', '5 3 19 12 5 21 5 3');
+
+      // Smooth fade-out, then stop scheduler
+      if (audioCtx && masterGainNode) {
+        masterGainNode.gain.cancelScheduledValues(audioCtx.currentTime);
+        masterGainNode.gain.setValueAtTime(masterGainNode.gain.value, audioCtx.currentTime);
+        masterGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.6);
+      }
+      if (beatScheduler) {
+        setTimeout(() => clearInterval(beatScheduler), 700);
+        beatScheduler = null;
+      }
+    }
+  });
+
+  /* HOW_TO_REPLACE_AUDIO ===================================================
+     OPTION A — Use your own MP3 / WAV file (recommended for production):
+     ---------------------------------------------------------------------
+     1. Drop the audio file next to platinum-nyc.html, e.g. "platinum-vibe.mp3"
+     2. Delete EVERYTHING above this comment from "// Tempo: 118 BPM" down,
+        including the entire vibeBtn click handler.
+     3. Replace it with this 12-line version:
+
+         const audio = new Audio('platinum-vibe.mp3');
+         audio.loop = true;
+         audio.volume = 0.45;
+         vibeBtn.addEventListener('click', () => {
+           playing = !playing;
+           vibeBtn.classList.toggle('playing', playing);
+           eq.classList.toggle('playing', playing);
+           if (playing) {
+             audio.play();
+             vibeLabel.textContent = 'Vibe Playing';
+             playIcon.setAttribute('points', '6 4 10 4 10 20 6 20 14 4 18 4 18 20 14 20');
+           } else {
+             audio.pause();
+             vibeLabel.textContent = 'Play the Vibe';
+             playIcon.setAttribute('points', '5 3 19 12 5 21 5 3');
+           }
+         });
+
+     OPTION B — Stream from SoundCloud / Spotify (legal-safe for a real bar):
+     ---------------------------------------------------------------------
+     Use the SoundCloud embed widget instead — gives you licensing coverage
+     and lets the bar pick any DJ mix without uploading audio.
+     Replace the vibe-row block in HTML with:
+
+         <iframe width="100%" height="20" scrolling="no" frameborder="no"
+           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/YOUR_PLAYLIST_ID&color=%23E8E9EC&auto_play=false&hide_related=true&show_comments=false">
+         </iframe>
+
+     OPTION C — Tweak THIS synthesized beat:
+     ---------------------------------------------------------------------
+     • Change BPM constant above (try 122-126 for harder house, 100 for downtempo)
+     • Change bassPattern array — current is A minor, try [65.41, 65.41, 49, 58.27] for C minor
+     • Change pluckChord — try [261.63, 311.13, 392, 466.16] for Cm7 stabs
+     • Increase master.gain target (line: linearRampToValueAtTime(0.55, ...)) up to 0.8 for louder
+     ====================================================================== */
+
+  // ---------- MENU DATA (sample · editable) ----------
+  // Set `signature: true` on items you want to highlight as premium —
+  // they get a shimmering platinum star + soft glow.
+  const menuData = {
+    burgers: [
+      { name: 'Platinum Smashburger', price: 'from $16', desc: 'Double smash, aged cheddar, caramelized onion, brioche.', signature: true },
+      { name: 'Truffle Butter Burger', price: 'from $19', desc: 'Black truffle butter, gruyère, crispy shallots.' },
+      { name: 'Wagyu Brooklyn', price: 'from $24', desc: 'Wagyu blend, smoked aioli, pickled jalapeño.', signature: true },
+      { name: 'Classic Cheeseburger', price: 'from $14', desc: 'Lettuce, tomato, house sauce, sesame bun.' },
+    ],
+    steaks: [
+      { name: 'Ribeye 12oz', price: 'from $38', desc: 'Aged USDA ribeye, herb butter, charred lemon.' },
+      { name: 'New York Strip', price: 'from $34', desc: 'Pan-seared, peppercorn jus, roasted potatoes.' },
+      { name: 'Filet Mignon 8oz', price: 'from $42', desc: 'Truffle reduction, asparagus, pommes purée.', signature: true },
+      { name: 'Lamb Chops', price: 'from $36', desc: 'Garlic-rosemary marinade, mint chimichurri.' },
+    ],
+    salads: [
+      { name: 'Platinum Caesar', price: 'from $14', desc: 'Baby gem, white anchovy, parmesan crisp.', signature: true },
+      { name: 'Roasted Beet & Goat Cheese', price: 'from $13', desc: 'Pistachio, citrus, honey vinaigrette.' },
+      { name: 'Mediterranean Bowl', price: 'from $15', desc: 'Quinoa, cucumber, feta, olives, lemon-tahini.' },
+      { name: 'Burrata Garden', price: 'from $17', desc: 'Heirloom tomato, basil oil, sourdough.' },
+    ],
+    drinks: [
+      { name: 'Old Fashioned', price: 'from $14', desc: 'Bourbon, demerara, orange, aromatic bitters.' },
+      { name: 'Espresso Martini', price: 'from $15', desc: 'Vodka, cold brew, kahlúa, vanilla foam.', signature: true },
+      { name: 'Negroni', price: 'from $13', desc: 'Gin, campari, sweet vermouth, orange peel.' },
+      { name: 'House Margarita', price: 'from $13', desc: 'Tequila, lime, agave, salt rim.' },
+    ],
+    coffee: [
+      { name: 'Espresso', price: 'from $4', desc: 'Single origin, double shot.' },
+      { name: 'Cappuccino', price: 'from $5', desc: 'Espresso, steamed milk, micro foam.' },
+      { name: 'Tiramisu', price: 'from $11', desc: 'Mascarpone, espresso, cocoa, ladyfinger.', signature: true },
+      { name: 'Lava Cake', price: 'from $12', desc: 'Warm chocolate, vanilla bean ice cream.' },
+    ],
+    mojitos: [
+      { name: 'Classic Mojito', price: 'from $13', desc: 'White rum, fresh mint, lime, sugar, soda.' },
+      { name: 'Strawberry Mojito', price: 'from $14', desc: 'Muddled strawberry, mint, lime, rum.', signature: true },
+      { name: 'Passionfruit Mojito', price: 'from $14', desc: 'Passionfruit, mint, lime, rum, soda.' },
+      { name: 'Mango Mojito', price: 'from $14', desc: 'Fresh mango, mint, lime, rum.' },
+    ],
+  };
+
+  // ---------- Render menu items into the active tab ----------
+  const menuItems = document.getElementById('menuItems');
+  function renderMenu(cat) {
+    const items = menuData[cat] || [];
+    menuItems.innerHTML = items.map((it, i) => `
+      <div class="menu-item ${it.signature ? 'signature' : ''}" style="animation-delay:${i * 0.08}s">
+        <span class="menu-item-name">${it.name}</span>
+        <span class="menu-item-price">${it.price}</span>
+        <span class="menu-item-desc">${it.desc}</span>
+      </div>
+    `).join('');
+  }
+  renderMenu('burgers');
+
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderMenu(tab.dataset.cat);
+    });
+  });
+
+  // ---------- Modal full menu ----------
+  function renderModalCat(id, items) {
+    document.getElementById(id).innerHTML = items.map((it, i) => `
+      <div class="menu-item ${it.signature ? 'signature' : ''}" style="animation-delay:${i * 0.05}s;">
+        <span class="menu-item-name">${it.name}</span>
+        <span class="menu-item-price">${it.price}</span>
+        <span class="menu-item-desc">${it.desc}</span>
+      </div>
+    `).join('');
+  }
+  renderModalCat('modalBurgers', menuData.burgers);
+  renderModalCat('modalSteaks', menuData.steaks);
+  renderModalCat('modalSalads', menuData.salads);
+  renderModalCat('modalMojitos', [...menuData.mojitos, ...menuData.drinks]);
+  renderModalCat('modalCoffee', menuData.coffee);
+
+  const modal = document.getElementById('menuModal');
+  document.getElementById('openMenu').addEventListener('click', () => {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('closeMenu').addEventListener('click', () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ---------- Booking form (static demo — replace with real backend) ----------
+  document.getElementById('bookingForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const success = document.getElementById('formSuccess');
+    success.classList.add('show');
+    e.target.reset();
+    setTimeout(() => success.classList.remove('show'), 5000);
+  });
+</script>
+</body>
+</html>
